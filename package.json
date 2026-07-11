@@ -1,0 +1,13 @@
+{
+  "name": "orbita-now",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page de Órbita — Tu negocio, en órbita.",
+  "scripts": {
+    "start": "serve -s . -l $PORT",
+    "dev": "serve -s . -l 3000"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}
