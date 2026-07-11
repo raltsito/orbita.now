@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Órbita — Tu negocio, en órbita.</title>
+  <link rel="icon" type="image/png" href="assets/orbita-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=DM+Sans:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #0D0A1A; }
+    ::selection { background: #7C5CFC; color: #ffffff; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #1A1425; }
+    ::-webkit-scrollbar-thumb { background: #7C5CFC; border-radius: 2px; }
+    * { box-sizing: border-box; }
+    @keyframes orbSpin20 { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes orbSpin35 { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+    @keyframes orbSpin50 { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes orbSpin28 { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+    @keyframes periodPulse { 0%, 100% { text-shadow: 0 0 12px rgba(245,166,35,0.5); } 50% { text-shadow: 0 0 28px rgba(245,166,35,0.95); } }
+    @keyframes floatCard0 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes floatCard1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes floatCard2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes scrollPulse { 0% { opacity: 0; transform: translateY(0); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(16px); } }
+    @keyframes twinkle { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.6; } }
+  </style>
+  <script>
+    window.__orbitaEase = 'cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+  </script>
+</helmet>
+
+<div style="font-family: 'DM Sans', sans-serif; background: #0D0A1A; color: #ffffff; overflow-x: hidden;">
+
+  <!-- FIXED MARK -->
+  <div style="position: fixed; top: 24px; left: 24px; z-index: 50; display: flex; align-items: center; gap: 10px;">
+    <svg width="30" height="30" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="22" fill="none" stroke="#ffffff" stroke-width="9"></circle>
+      <ellipse cx="50" cy="50" rx="38" ry="14" fill="none" stroke="#B08CFF" stroke-width="4" transform="rotate(-20 50 50)"></ellipse>
+    </svg>
+    <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 0.04em;">ÓRBITA</span>
+  </div>
+  <a href="#contacto" style="position: fixed; top: 20px; right: 24px; z-index: 50; font-family: 'DM Sans', sans-serif; font-size: 13px; color: #B08CFF; text-decoration: none; border: 1px solid rgba(176,140,255,0.35); padding: 9px 18px; border-radius: 999px; transition: all 300ms cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="background: #7C5CFC; color: #ffffff; border-color: #7C5CFC;">Contacto</a>
+
+  <!-- ============ HERO ============ -->
+  <section data-screen-label="Hero" style="position: relative; overflow: hidden; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: radial-gradient(ellipse 900px 700px at 50% 45%, rgba(124,92,252,0.22), transparent 70%), #0D0A1A;">
+
+    <sc-for list="{{ dots }}" as="d" hint-placeholder-count="0">
+      <div style="position: absolute; left: {{ d.left }}%; top: {{ d.top }}%; width: {{ d.size }}px; height: {{ d.size }}px; border-radius: 50%; background: #ffffff; opacity: {{ d.opacity }}; animation: twinkle {{ d.dur }}s ease-in-out infinite; animation-delay: {{ d.delay }}s; pointer-events: none; z-index: 0;"></div>
+    </sc-for>
+
+    <svg style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+      <g style="transform-origin: 800px 500px; animation: orbSpin20 24s linear infinite;">
+        <ellipse cx="800" cy="500" rx="620" ry="220" fill="none" stroke="#7C5CFC" stroke-width="1.5" opacity="0.12" transform="rotate(-18 800 500)"></ellipse>
+      </g>
+      <g style="transform-origin: 800px 500px; animation: orbSpin35 38s linear infinite;">
+        <ellipse cx="800" cy="500" rx="480" ry="480" fill="none" stroke="#7C5CFC" stroke-width="1" opacity="0.08"></ellipse>
+      </g>
+      <g style="transform-origin: 800px 500px; animation: orbSpin50 52s linear infinite;">
+        <ellipse cx="800" cy="500" rx="700" ry="160" fill="none" stroke="#F5A623" stroke-width="1" opacity="0.06" transform="rotate(12 800 500)"></ellipse>
+      </g>
+      <g style="transform-origin: 800px 500px; animation: orbSpin28 30s linear infinite;">
+        <ellipse cx="800" cy="500" rx="340" ry="340" fill="none" stroke="#B08CFF" stroke-width="1" opacity="0.1"></ellipse>
+      </g>
+    </svg>
+
+    <!-- right decorative orbital graphic -->
+    <svg style="position: absolute; right: -120px; top: 50%; transform: translateY(-50%); width: 560px; height: 560px; pointer-events: none; z-index: 0; opacity: 0.5;" viewBox="0 0 400 400">
+      <g style="transform-origin: 200px 200px; animation: orbSpin35 40s linear infinite;">
+        <ellipse cx="200" cy="200" rx="150" ry="150" fill="none" stroke="#7C5CFC" stroke-width="1.2" opacity="0.5"></ellipse>
+      </g>
+      <g style="transform-origin: 200px 200px; animation: orbSpin20 26s linear infinite;">
+        <ellipse cx="200" cy="200" rx="170" ry="60" fill="none" stroke="#B08CFF" stroke-width="1.2" opacity="0.55" transform="rotate(-24 200 200)"></ellipse>
+      </g>
+      <g style="transform-origin: 200px 200px; animation: orbSpin50 55s linear infinite;">
+        <ellipse cx="200" cy="200" rx="110" ry="110" fill="none" stroke="#F5A623" stroke-width="1" opacity="0.35"></ellipse>
+      </g>
+    </svg>
+
+    <div style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 24px; max-width: 900px;">
+      <div style="font-family: 'DM Sans', sans-serif; font-size: 13px; letter-spacing: 0.2em; color: #B08CFF; text-transform: uppercase; margin-bottom: 24px;">Software Studio · Saltillo, MX</div>
+      <h1 style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(44px, 7vw, 88px); line-height: 1.05; margin: 0 0 24px; color: #ffffff;">Tu negocio, en órbita<span style="color: #F5A623; animation: periodPulse 2.6s ease-in-out infinite;">.</span></h1>
+      <p style="font-size: 20px; color: #B08CFF; max-width: 560px; margin: 0 0 40px; line-height: 1.5;">Construimos SaaS y software a medida para empresas que quieren crecer.</p>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
+        <a href="#productos" style="height: 48px; padding: 0 30px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; background: #7C5CFC; color: #ffffff; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15px; transition: all 300ms cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="transform: translateY(-2px); box-shadow: 0 0 24px rgba(124,92,252,0.55);">Ver productos</a>
+        <a href="#contacto" style="height: 48px; padding: 0 30px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; background: transparent; border: 1.5px solid #B08CFF; color: #B08CFF; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15px; transition: all 300ms cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="background: #7C5CFC; color: #ffffff; border-color: #7C5CFC;">Hablemos de tu proyecto</a>
+      </div>
+    </div>
+
+    <div style="position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+      <div style="width: 1px; height: 40px; background: linear-gradient(#B08CFF, transparent); animation: scrollPulse 1.8s ease-in-out infinite;"></div>
+      <span style="color: #B08CFF; font-size: 14px;">↓</span>
+    </div>
+  </section>
+
+  <!-- ============ PRODUCTOS ============ -->
+  <section data-screen-label="Productos" id="productos" ref="{{ productsRef }}" style="position: relative; overflow: hidden; background: #13101F; padding: 120px 24px;">
+    <div style="max-width: 1120px; margin: 0 auto; opacity: {{ productsHeadingOpacity }}; transform: {{ productsHeadingTransform }}; transition: opacity 700ms cubic-bezier(0.25,0.46,0.45,0.94), transform 700ms cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div style="text-align: center; margin-bottom: 56px;">
+        <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(32px, 4.5vw, 48px); color: #ffffff; margin: 0 0 14px;">Nuestra suite</h2>
+        <div style="width: 40px; height: 3px; background: #B08CFF; margin: 0 auto 20px; border-radius: 2px;"></div>
+        <p style="font-size: 18px; color: #B08CFF; margin: 0;">Productos construidos para industrias específicas.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+
+        <!-- Card 1: INTRA -->
+        <div onMouseEnter="{{ card0Enter }}" onMouseLeave="{{ card0Leave }}" style="perspective: 1400px; height: 280px; opacity: {{ productsHeadingOpacity }}; transform: {{ productsHeadingTransform }}; transition: opacity 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.05s, transform 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.05s;">
+          <div style="width: 100%; height: 100%; animation: floatCard0 3s ease-in-out infinite;">
+          <div style="position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 500ms cubic-bezier(0.25,0.46,0.45,0.94); transform: {{ card0Transform }};">
+            <div style="position: absolute; inset: 0; backface-visibility: hidden; background: #1A1425; border: 1px solid rgba(176,140,255,0.2); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px;">
+              <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(124,92,252,0.18); box-shadow: 0 0 24px rgba(124,92,252,0.35); display: flex; align-items: center; justify-content: center;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7C5CFC" stroke-width="1.8"><path d="M4 4h16v12H10l-4 4v-4H4z"></path></svg>
+              </div>
+              <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 24px; color: #ffffff;">Órbita Consultorios</div>
+              <div style="font-size: 14px; color: #B08CFF;">Para consultorios médicos</div>
+            </div>
+            <div style="position: absolute; inset: 0; backface-visibility: hidden; transform: rotateY(180deg); background: #1A1425; border: 1px solid rgba(176,140,255,0.2); border-radius: 20px; box-shadow: 0 0 32px rgba(124,92,252,0.5); padding: 24px; display: flex; flex-direction: column; justify-content: center; gap: 12px;">
+              <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; color: #ffffff;">Órbita Consultorios</div>
+              <p style="font-size: 16px; color: #B08CFF; margin: 0; line-height: 1.5;">Automatiza citas, recordatorios y seguimiento desde WhatsApp. Ideal para consultorios, barberías, salones y cualquier negocio que agenda clientes.</p>
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <!-- Card 2: OrbitaEdu -->
+        <div onMouseEnter="{{ card1Enter }}" onMouseLeave="{{ card1Leave }}" style="perspective: 1400px; height: 280px; opacity: {{ productsHeadingOpacity }}; transform: {{ productsHeadingTransform }}; transition: opacity 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.2s, transform 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.2s;">
+          <div style="width: 100%; height: 100%; animation: floatCard1 3s ease-in-out infinite 0.4s;">
+          <div style="position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 500ms cubic-bezier(0.25,0.46,0.45,0.94); transform: {{ card1Transform }};">
+            <div style="position: absolute; inset: 0; backface-visibility: hidden; background: #1A1425; border: 1px solid rgba(176,140,255,0.2); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px;">
+              <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(124,92,252,0.18); box-shadow: 0 0 24px rgba(124,92,252,0.35); display: flex; align-items: center; justify-content: center;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7C5CFC" stroke-width="1.8"><path d="M12 3C7 3 3 6.6 3 11c0 2.4 1.2 4.6 3.1 6.1L5.5 21l4.3-1.6c.7.2 1.4.3 2.2.3 5 0 9-3.6 9-8s-4-8.7-9-8.7z"></path><circle cx="8.3" cy="11" r="0.9" fill="#7C5CFC" stroke="none"></circle><circle cx="12" cy="11" r="0.9" fill="#7C5CFC" stroke="none"></circle><circle cx="15.7" cy="11" r="0.9" fill="#7C5CFC" stroke="none"></circle></svg>
+              </div>
+              <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 24px; color: #ffffff;">Órbita Eco</div>
+              <div style="font-size: 14px; color: #B08CFF;">Mensajería automatizada por WhatsApp</div>
+              <a href="https://eco.orbita.now/" target="_blank" rel="noopener" style="margin-top: 2px; display: inline-flex; align-items: center; justify-content: center; height: 34px; padding: 0 16px; border-radius: 999px; background: rgba(124,92,252,0.18); border: 1px solid #7C5CFC; color: #B08CFF; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12px; text-decoration: none; transition: all 300ms cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="background: #7C5CFC; color: #ffffff;">Visitar sitio →</a>
+            </div>
+            <div style="position: absolute; inset: 0; backface-visibility: hidden; transform: rotateY(180deg); background: #1A1425; border: 1px solid rgba(176,140,255,0.2); border-radius: 20px; box-shadow: 0 0 32px rgba(124,92,252,0.5); padding: 24px; display: flex; flex-direction: column; justify-content: center; gap: 12px;">
+              <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; color: #ffffff;">Órbita Eco</div>
+              <p style="font-size: 16px; color: #B08CFF; margin: 0; line-height: 1.5;">Sistema de mensajes automatizados por WhatsApp para negocios de cualquier industria.</p>
+              <a href="https://eco.orbita.now/" target="_blank" rel="noopener" style="margin-top: 6px; display: inline-flex; align-items: center; justify-content: center; height: 38px; padding: 0 18px; border-radius: 999px; background: #7C5CFC; color: #ffffff; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13px; text-decoration: none; transition: transform 300ms cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="transform: translateY(-2px);">Visitar sitio →</a>
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <!-- Card 3: NOM-035 -->
+        <div onMouseEnter="{{ card2Enter }}" onMouseLeave="{{ card2Leave }}" style="perspective: 1400px; height: 280px; opacity: {{ productsHeadingOpacity }}; transform: {{ productsHeadingTransform }}; transition: opacity 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.35s, transform 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.35s;">
+          <div style="width: 100%; height: 100%; animation: floatCard2 3s ease-in-out infinite 0.8s;">
+          <div style="position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 500ms cubic-bezier(0.25,0.46,0.45,0.94); transform: {{ card2Transform }};">
+            <div style="position: absolute; inset: 0; backface-visibility: hidden; background: #1A1425; border: 1px solid rgba(176,140,255,0.2); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px;">
+              <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(124,92,252,0.18); box-shadow: 0 0 24px rgba(124,92,252,0.35); display: flex; align-items: center; justify-content: center;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7C5CFC" stroke-width="1.8"><path d="M12 3l7 3v5c0 5-3 8.5-7 9-4-0.5-7-4-7-9V6l7-3z"></path><path d="M9 12l2 2 4-4"></path></svg>
+              </div>
+              <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 24px; color: #ffffff;">NOM-035</div>
+              <div style="font-size: 14px; color: #B08CFF;">Para empresas en México</div>
+              <a href="https://nom035.orbita.now/" target="_blank" rel="noopener" style="margin-top: 2px; display: inline-flex; align-items: center; justify-content: center; height: 34px; padding: 0 16px; border-radius: 999px; background: rgba(124,92,252,0.18); border: 1px solid #7C5CFC; color: #B08CFF; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12px; text-decoration: none; transition: all 300ms cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="background: #7C5CFC; color: #ffffff;">Visitar sitio →</a>
+            </div>
+            <div style="position: absolute; inset: 0; backface-visibility: hidden; transform: rotateY(180deg); background: #1A1425; border: 1px solid rgba(176,140,255,0.2); border-radius: 20px; box-shadow: 0 0 32px rgba(124,92,252,0.5); padding: 24px; display: flex; flex-direction: column; justify-content: center; gap: 12px;">
+              <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; color: #ffffff;">NOM-035</div>
+              <p style="font-size: 16px; color: #B08CFF; margin: 0; line-height: 1.5;">Aplica y documenta la NOM-035 en tu empresa con validación especializada.</p>
+              <a href="https://nom035.orbita.now/" target="_blank" rel="noopener" style="margin-top: 6px; display: inline-flex; align-items: center; justify-content: center; height: 38px; padding: 0 18px; border-radius: 999px; background: #7C5CFC; color: #ffffff; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13px; text-decoration: none; transition: transform 300ms cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="transform: translateY(-2px);">Visitar sitio →</a>
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Órbita Edu -->
+        <div onMouseEnter="{{ card3Enter }}" onMouseLeave="{{ card3Leave }}" style="perspective: 1400px; height: 280px; opacity: {{ productsHeadingOpacity }}; transform: {{ productsHeadingTransform }}; transition: opacity 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.5s, transform 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.5s;">
+          <div style="width: 100%; height: 100%; animation: floatCard1 3s ease-in-out infinite 1.2s;">
+          <div style="position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 500ms cubic-bezier(0.25,0.46,0.45,0.94); transform: {{ card3Transform }};">
+            <div style="position: absolute; inset: 0; backface-visibility: hidden; background: #1A1425; border: 1px solid rgba(176,140,255,0.2); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px;">
+              <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(124,92,252,0.18); box-shadow: 0 0 24px rgba(124,92,252,0.35); display: flex; align-items: center; justify-content: center;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7C5CFC" stroke-width="1.8"><path d="M4 5h7a3 3 0 013 3v11a3 3 0 00-3-3H4z"></path><path d="M20 5h-7a3 3 0 00-3 3v11a3 3 0 013-3h7z"></path></svg>
+              </div>
+              <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 24px; color: #ffffff;">Órbita Edu</div>
+              <div style="font-size: 14px; color: #B08CFF;">Para escuelas y academias</div>
+            </div>
+            <div style="position: absolute; inset: 0; backface-visibility: hidden; transform: rotateY(180deg); background: #1A1425; border: 1px solid rgba(176,140,255,0.2); border-radius: 20px; box-shadow: 0 0 32px rgba(124,92,252,0.5); padding: 24px; display: flex; flex-direction: column; justify-content: center; gap: 12px;">
+              <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; color: #ffffff;">Órbita Edu</div>
+              <p style="font-size: 16px; color: #B08CFF; margin: 0; line-height: 1.5;">Plataforma educativa lista para personalizar — cursos, alumnos y progreso en un solo lugar.</p>
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Órbita Control -->
+        <div onMouseEnter="{{ card4Enter }}" onMouseLeave="{{ card4Leave }}" style="perspective: 1400px; height: 280px; opacity: {{ productsHeadingOpacity }}; transform: {{ productsHeadingTransform }}; transition: opacity 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.65s, transform 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.65s;">
+          <div style="width: 100%; height: 100%; animation: floatCard2 3s ease-in-out infinite 1.6s;">
+          <div style="position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 500ms cubic-bezier(0.25,0.46,0.45,0.94); transform: {{ card4Transform }};">
+            <div style="position: absolute; inset: 0; backface-visibility: hidden; background: #1A1425; border: 1px solid rgba(176,140,255,0.2); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px;">
+              <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(124,92,252,0.18); box-shadow: 0 0 24px rgba(124,92,252,0.35); display: flex; align-items: center; justify-content: center;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7C5CFC" stroke-width="1.8"><path d="M4 19V5M4 19h16M8 15v3M12 10v8M16 6v12"></path></svg>
+              </div>
+              <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 24px; color: #ffffff;">Órbita Control</div>
+              <div style="font-size: 14px; color: #B08CFF;">Control financiero para tu negocio</div>
+            </div>
+            <div style="position: absolute; inset: 0; backface-visibility: hidden; transform: rotateY(180deg); background: #1A1425; border: 1px solid rgba(176,140,255,0.2); border-radius: 20px; box-shadow: 0 0 32px rgba(124,92,252,0.5); padding: 24px; display: flex; flex-direction: column; justify-content: center; gap: 12px;">
+              <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; color: #ffffff;">Órbita Control</div>
+              <p style="font-size: 16px; color: #B08CFF; margin: 0; line-height: 1.5;">Ingresos, gastos y flujo de caja en un solo lugar, con reportes claros al instante. Se conecta a cualquiera de nuestros servicios Órbita para tener finanzas automatizadas.</p>
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <!-- Card 6: CTA -->
+        <a href="#contacto" style="height: 280px; border-radius: 20px; background: linear-gradient(155deg, rgba(124,92,252,0.25), rgba(19,16,31,0.4)); border: 1.5px dashed rgba(176,140,255,0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 24px; text-align: center; text-decoration: none; transition: all 300ms cubic-bezier(0.25,0.46,0.45,0.94); animation: floatCard0 3s ease-in-out infinite 0.4s; opacity: {{ productsHeadingOpacity }}; transform: {{ productsHeadingTransform }};" style-hover="border-color: #7C5CFC; background: linear-gradient(155deg, rgba(124,92,252,0.4), rgba(19,16,31,0.4));">
+          <div style="width: 56px; height: 56px; border-radius: 50%; border: 1.5px solid #B08CFF; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 26px; color: #B08CFF;">+</div>
+          <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 22px; color: #ffffff;">Construimos a tu necesidad</div>
+          <div style="font-size: 14px; color: #B08CFF;">Contáctanos →</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICIOS ============ -->
+  <section data-screen-label="Servicios" id="servicios" ref="{{ serviciosRef }}" onMouseEnter="{{ pauseCarousel }}" onMouseLeave="{{ resumeCarousel }}" style="position: relative; overflow: hidden; background: #0D0A1A; padding: 120px 0;">
+    <div style="max-width: 1120px; margin: 0 auto; padding: 0 24px; opacity: {{ serviciosOpacity }}; transform: {{ serviciosTransform }}; transition: opacity 700ms cubic-bezier(0.25,0.46,0.45,0.94), transform 700ms cubic-bezier(0.25,0.46,0.45,0.94);">
+      <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(32px, 4.5vw, 48px); color: #ffffff; text-align: center; margin: 0 0 64px;">¿Qué construimos?</h2>
+
+      <div style="position: relative; overflow: hidden; border-radius: 20px;">
+        <div style="display: flex; width: 300%; transform: {{ sliderTransform }}; transition: transform 400ms cubic-bezier(0.25,0.46,0.45,0.94);">
+
+          <!-- Slide 1 -->
+          <div style="width: 33.333%; flex-shrink: 0; display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; padding: 20px;">
+            <div>
+              <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(28px, 4vw, 56px); color: #ffffff; margin: 0 0 20px;">Desarrollo a medida</h3>
+              <p style="font-size: 18px; color: #B08CFF; line-height: 1.6; margin: 0; max-width: 480px;">Apps web, sistemas internos y plataformas SaaS construidas desde cero con tu negocio en mente. Stack moderno, entrega real.</p>
+            </div>
+            <svg viewBox="0 0 260 260" style="width: 100%; max-width: 280px; justify-self: center;">
+              <circle cx="130" cy="130" r="100" fill="none" stroke="#7C5CFC" stroke-width="1" opacity="0.25"></circle>
+              <line x1="60" y1="80" x2="150" y2="60" stroke="#B08CFF" stroke-width="1.5" opacity="0.6"></line>
+              <line x1="150" y1="60" x2="200" y2="140" stroke="#7C5CFC" stroke-width="1.5" opacity="0.6"></line>
+              <line x1="200" y1="140" x2="90" y2="190" stroke="#B08CFF" stroke-width="1.5" opacity="0.6"></line>
+              <line x1="90" y1="190" x2="60" y2="80" stroke="#7C5CFC" stroke-width="1.5" opacity="0.6"></line>
+              <circle cx="60" cy="80" r="10" fill="#7C5CFC"></circle>
+              <circle cx="150" cy="60" r="8" fill="#B08CFF"></circle>
+              <circle cx="200" cy="140" r="12" fill="#F5A623"></circle>
+              <circle cx="90" cy="190" r="9" fill="#7C4FC4"></circle>
+            </svg>
+          </div>
+
+          <!-- Slide 2 -->
+          <div style="width: 33.333%; flex-shrink: 0; display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; padding: 20px;">
+            <div>
+              <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(28px, 4vw, 56px); color: #ffffff; margin: 0 0 20px;">Automatización inteligente</h3>
+              <p style="font-size: 18px; color: #B08CFF; line-height: 1.6; margin: 0; max-width: 480px;">Integramos WhatsApp Business, notificaciones y flujos automáticos para que tu negocio trabaje mientras descansas. <span style="color: #F5A623;">Como hicimos con INTRA.</span></p>
+            </div>
+            <svg viewBox="0 0 260 260" style="width: 100%; max-width: 280px; justify-self: center;">
+              <ellipse cx="130" cy="130" rx="110" ry="40" fill="none" stroke="#7C5CFC" stroke-width="1" opacity="0.3" transform="rotate(-15 130 130)"></ellipse>
+              <rect x="50" y="60" width="90" height="50" rx="14" fill="#1A1425" stroke="#7C5CFC" stroke-width="1.5"></rect>
+              <rect x="120" y="130" width="90" height="50" rx="14" fill="#1A1425" stroke="#B08CFF" stroke-width="1.5"></rect>
+              <circle cx="70" cy="85" r="3" fill="#7C5CFC"></circle><circle cx="90" cy="85" r="3" fill="#7C5CFC"></circle><circle cx="110" cy="85" r="3" fill="#7C5CFC"></circle>
+              <circle cx="140" cy="155" r="3" fill="#F5A623"></circle><circle cx="160" cy="155" r="3" fill="#F5A623"></circle><circle cx="180" cy="155" r="3" fill="#F5A623"></circle>
+            </svg>
+          </div>
+
+          <!-- Slide 3 -->
+          <div style="width: 33.333%; flex-shrink: 0; display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; padding: 20px;">
+            <div>
+              <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(28px, 4vw, 56px); color: #ffffff; margin: 0 0 20px;">Branding &amp; Diseño digital</h3>
+              <p style="font-size: 18px; color: #B08CFF; line-height: 1.6; margin: 0; max-width: 480px;">Identidad visual, landing pages y experiencias digitales que representan tu marca al nivel que merece.</p>
+            </div>
+            <svg viewBox="0 0 260 260" style="width: 100%; max-width: 280px; justify-self: center;">
+              <circle cx="90" cy="100" r="46" fill="#7C5CFC" opacity="0.85"></circle>
+              <circle cx="160" cy="90" r="30" fill="#B08CFF" opacity="0.8"></circle>
+              <rect x="90" y="150" width="90" height="60" rx="16" fill="#F5A623" opacity="0.9"></rect>
+              <ellipse cx="130" cy="130" rx="120" ry="90" fill="none" stroke="#7C4FC4" stroke-width="1" opacity="0.3"></ellipse>
+            </svg>
+          </div>
+
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 32px;">
+        <button onClick="{{ prevSlide }}" style="width: 44px; height: 44px; border-radius: 50%; background: rgba(124,92,252,0.2); border: 1px solid #7C5CFC; color: #ffffff; cursor: pointer; font-size: 16px; transition: background 300ms cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="background: #7C5CFC;">←</button>
+        <div style="display: flex; gap: 10px;">
+          <span onClick="{{ goToSlide0 }}" style="width: 8px; height: 8px; border-radius: 50%; cursor: pointer; background: {{ dot0Color }};"></span>
+          <span onClick="{{ goToSlide1 }}" style="width: 8px; height: 8px; border-radius: 50%; cursor: pointer; background: {{ dot1Color }};"></span>
+          <span onClick="{{ goToSlide2 }}" style="width: 8px; height: 8px; border-radius: 50%; cursor: pointer; background: {{ dot2Color }};"></span>
+        </div>
+        <button onClick="{{ nextSlide }}" style="width: 44px; height: 44px; border-radius: 50%; background: rgba(124,92,252,0.2); border: 1px solid #7C5CFC; color: #ffffff; cursor: pointer; font-size: 16px; transition: background 300ms cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="background: #7C5CFC;">→</button>
+      </div>
+
+      <div style="display: flex; justify-content: center; margin-top: 56px;">
+        <a href="#contacto" style="position: relative; overflow: hidden; height: 56px; width: 240px; display: flex; align-items: center; justify-content: center; border-radius: 999px; background: #F5A623; color: #0D0A1A; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; transition: transform 300ms cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="transform: translateY(-2px);">Cotiza tu proyecto →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CASOS DE ÉXITO ============ -->
+  <section data-screen-label="Casos de exito" id="casos" ref="{{ casosRef }}" style="position: relative; overflow: hidden; background: #13101F; padding: 120px 24px;">
+    <div style="max-width: 1120px; margin: 0 auto;">
+      <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(32px, 4.5vw, 48px); color: #ffffff; margin: 0 0 56px; opacity: {{ casosHeadingOpacity }}; transform: {{ casosHeadingTransform }}; transition: opacity 700ms cubic-bezier(0.25,0.46,0.45,0.94), transform 700ms cubic-bezier(0.25,0.46,0.45,0.94);">Lo que hemos construido</h2>
+
+      <div style="display: flex; flex-direction: column;">
+
+        <!-- Row INTRA -->
+        <div style="display: grid; grid-template-columns: 220px 1fr; gap: 48px; padding: 44px 0; border-top: 1px solid rgba(176,140,255,0.15); opacity: {{ casosCardOpacity }}; transform: {{ casosCardTransform }}; transition: opacity 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.1s, transform 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.1s;">
+          <div>
+            <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: #7C5CFC; letter-spacing: 0.05em; margin-bottom: 10px;">01</div>
+            <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 22px; color: #ffffff; margin-bottom: 10px;">INTRA</div>
+            <span style="display: inline-block; background: rgba(124,92,252,0.2); color: #B08CFF; font-size: 12px; padding: 5px 12px; border-radius: 999px;">Clínica · Saltillo</span>
+            <svg width="56" height="56" viewBox="0 0 100 100" style="margin-top: 20px; opacity: 0.7;">
+              <circle cx="50" cy="50" r="26" fill="none" stroke="#7C5CFC" stroke-width="6" />
+              <ellipse cx="50" cy="50" rx="42" ry="15" fill="none" stroke="#B08CFF" stroke-width="2.5" transform="rotate(-18 50 50)" />
+            </svg>
+          </div>
+          <div>
+            <p style="margin: 0 0 18px; font-size: 18px; color: #ffffff; line-height: 1.65; max-width: 680px;"><span style="color: #B08CFF;">Agenda manual y pacientes sin seguimiento post-consulta.</span> Construimos un sistema de WhatsApp Business con recordatorios automáticos, confirmaciones y encuestas post-visita.</p>
+            <div style="display: flex; align-items: baseline; gap: 10px;">
+              <span style="color: #F5A623; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'DM Sans', sans-serif;">Resultado</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px; color: #F5A623;">Reducción de citas perdidas y reactivación de pacientes inactivos</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row Super Antony -->
+        <div style="display: grid; grid-template-columns: 220px 1fr; gap: 48px; padding: 44px 0; border-top: 1px solid rgba(176,140,255,0.15); border-bottom: 1px solid rgba(176,140,255,0.15); opacity: {{ casosCardOpacity }}; transform: {{ casosCardTransform }}; transition: opacity 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.25s, transform 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.25s;">
+          <div>
+            <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: #B08CFF; letter-spacing: 0.05em; margin-bottom: 10px;">02</div>
+            <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 22px; color: #ffffff; margin-bottom: 10px;">Super Antony</div>
+            <span style="display: inline-block; background: rgba(176,140,255,0.2); color: #B08CFF; font-size: 12px; padding: 5px 12px; border-radius: 999px;">Retail · Ramos Arizpe</span>
+            <svg width="56" height="56" viewBox="0 0 100 100" style="margin-top: 20px; opacity: 0.7;">
+              <circle cx="50" cy="50" r="26" fill="none" stroke="#B08CFF" stroke-width="6" />
+              <ellipse cx="50" cy="50" rx="42" ry="15" fill="none" stroke="#7C5CFC" stroke-width="2.5" transform="rotate(18 50 50)" />
+            </svg>
+          </div>
+          <div>
+            <p style="margin: 0 0 18px; font-size: 18px; color: #ffffff; line-height: 1.65; max-width: 680px;"><span style="color: #B08CFF;">Operaciones dispersas entre múltiples tiendas sin visibilidad central.</span> Desarrollamos un sistema web de gestión de turnos, reportes y control operativo unificado.</p>
+            <div style="display: flex; align-items: baseline; gap: 10px;">
+              <span style="color: #F5A623; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'DM Sans', sans-serif;">Resultado</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px; color: #F5A623;">Control total de operaciones y equipos desde un solo lugar</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section data-screen-label="Contacto" id="contacto" ref="{{ contactoRef }}" style="position: relative; overflow: hidden; background: #0F0A1F; padding: 140px 24px;">
+    <svg style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+      <g style="transform-origin: 800px 450px; animation: orbSpin20 22s linear infinite;">
+        <ellipse cx="800" cy="450" rx="560" ry="200" fill="none" stroke="#7C5CFC" stroke-width="1.5" opacity="0.16" transform="rotate(-15 800 450)"></ellipse>
+      </g>
+      <g style="transform-origin: 800px 450px; animation: orbSpin35 34s linear infinite;">
+        <ellipse cx="800" cy="450" rx="420" ry="420" fill="none" stroke="#B08CFF" stroke-width="1" opacity="0.14"></ellipse>
+      </g>
+      <g style="transform-origin: 800px 450px; animation: orbSpin50 48s linear infinite;">
+        <ellipse cx="800" cy="450" rx="640" ry="140" fill="none" stroke="#F5A623" stroke-width="1" opacity="0.1" transform="rotate(10 800 450)"></ellipse>
+      </g>
+      <g style="transform-origin: 800px 450px; animation: orbSpin28 27s linear infinite;">
+        <ellipse cx="800" cy="450" rx="280" ry="280" fill="none" stroke="#7C5CFC" stroke-width="1" opacity="0.18"></ellipse>
+      </g>
+    </svg>
+
+    <div style="position: relative; z-index: 1; max-width: 640px; margin: 0 auto; text-align: center; opacity: {{ contactoOpacity }}; transform: {{ contactoTransform }}; transition: opacity 700ms cubic-bezier(0.25,0.46,0.45,0.94), transform 700ms cubic-bezier(0.25,0.46,0.45,0.94);">
+      <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(36px, 6vw, 64px); color: #ffffff; margin: 0 0 20px;">¿Listo para despegar?</h2>
+      <p style="font-size: 20px; color: #B08CFF; margin: 0 0 40px;">Cuéntanos tu proyecto y te decimos cómo llevarlo a órbita.</p>
+
+      <div style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <a href="https://wa.me/528000000000" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 26px; border-radius: 999px; background: #7C5CFC; color: #ffffff; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16px; transition: all 300ms cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="transform: translateY(-2px); box-shadow: 0 0 24px rgba(124,92,252,0.55);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff"><path d="M12 2a10 10 0 00-8.5 15.2L2 22l4.9-1.5A10 10 0 1012 2zm5.6 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.4 0 .6-.1.2-.2.4-.4.6l-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.7-.1.3.1 1.9.9 2.2 1 .3.2.5.2.6.3.1.2.1.9-.1 1.5z"></path></svg>
+          Escríbenos en WhatsApp
+        </a>
+        <span onClick="{{ copyEmail }}" style="position: relative; display: inline-flex; align-items: center; gap: 8px; color: #F5A623; font-family: 'DM Sans', sans-serif; font-size: 16px; cursor: pointer; text-decoration: underline; text-underline-offset: 4px;">
+          contacto@orbita.now
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.8"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 012-2h10"></path></svg>
+          <sc-if value="{{ emailCopied }}" hint-placeholder-val="{{ false }}">
+            <span style="position: absolute; top: -32px; left: 50%; transform: translateX(-50%); background: #F5A623; color: #0D0A1A; font-size: 12px; padding: 4px 10px; border-radius: 6px; white-space: nowrap;">¡Copiado!</span>
+          </sc-if>
+        </span>
+      </div>
+
+      <div style="margin-top: 60px; font-size: 12px; color: rgba(176,140,255,0.4);">Órbita · Saltillo, Coahuila · 2026</div>
+    </div>
+  </section>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const dots = [];
+    let seed = 42;
+    const rand = () => {
+      seed = (seed * 9301 + 49297) % 233280;
+      return seed / 233280;
+    };
+    for (let i = 0; i < 70; i++) {
+      dots.push({
+        left: Math.round(rand() * 1000) / 10,
+        top: Math.round(rand() * 1000) / 10,
+        size: rand() > 0.85 ? 2.5 : 1.5,
+        opacity: 0.15 + rand() * 0.35,
+        dur: 2 + rand() * 3,
+        delay: rand() * 3,
+      });
+    }
+    this.dots = dots;
+
+    this.productsRef = React.createRef();
+    this.serviciosRef = React.createRef();
+    this.casosRef = React.createRef();
+    this.contactoRef = React.createRef();
+
+    this.state = {
+      slide: 0,
+      paused: false,
+      productsVisible: false,
+      serviciosVisible: false,
+      casosVisible: false,
+      contactoVisible: false,
+      emailCopied: false,
+      flip0: false,
+      flip1: false,
+      flip2: false,
+      flip3: false,
+      flip4: false,
+    };
+    this._flipTimers = {};
+  }
+
+  componentDidMount() {
+    this._interval = setInterval(() => {
+      if (!this.state.paused) {
+        this.setState((s) => ({ slide: (s.slide + 1) % 3 }));
+      }
+    }, 5000);
+
+    const targets = [
+      [this.productsRef, 'productsVisible'],
+      [this.serviciosRef, 'serviciosVisible'],
+      [this.casosRef, 'casosVisible'],
+      [this.contactoRef, 'contactoVisible'],
+    ];
+
+    this._observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const found = targets.find((t) => t[0].current === entry.target);
+            if (found) {
+              this.setState({ [found[1]]: true });
+              this._observer.unobserve(entry.target);
+            }
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    targets.forEach(([ref]) => {
+      if (ref.current) this._observer.observe(ref.current);
+    });
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._interval);
+    if (this._observer) this._observer.disconnect();
+    clearTimeout(this._copyTimeout);
+    Object.values(this._flipTimers).forEach((t) => clearTimeout(t));
+  }
+
+  cardEnter = (i) => {
+    clearTimeout(this._flipTimers[i]);
+    this._flipTimers[i] = setTimeout(() => {
+      this.setState({ ['flip' + i]: true });
+    }, 500);
+  };
+
+  cardLeave = (i) => {
+    clearTimeout(this._flipTimers[i]);
+    this.setState({ ['flip' + i]: false });
+  };
+
+  nextSlide = () => this.setState((s) => ({ slide: (s.slide + 1) % 3 }));
+  prevSlide = () => this.setState((s) => ({ slide: (s.slide + 2) % 3 }));
+  goToSlide = (i) => this.setState({ slide: i });
+  pauseCarousel = () => this.setState({ paused: true });
+  resumeCarousel = () => this.setState({ paused: false });
+
+  copyEmail = () => {
+    const done = () => {
+      this.setState({ emailCopied: true });
+      clearTimeout(this._copyTimeout);
+      this._copyTimeout = setTimeout(() => this.setState({ emailCopied: false }), 1800);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText('contacto@orbita.now').then(done).catch(done);
+    } else {
+      done();
+    }
+  };
+
+  renderVals() {
+    const s = this.state;
+    const hiddenStyle = { opacity: 0, transform: 'translateY(24px)' };
+    const shownStyle = { opacity: 1, transform: 'translateY(0)' };
+    const pv = s.productsVisible ? shownStyle : hiddenStyle;
+    const sv = s.serviciosVisible ? shownStyle : hiddenStyle;
+    const cv = s.casosVisible ? shownStyle : hiddenStyle;
+    const cov = s.contactoVisible ? shownStyle : hiddenStyle;
+    const casosHead = s.casosVisible
+      ? { opacity: 1, transform: 'translateX(0)' }
+      : { opacity: 0, transform: 'translateX(-32px)' };
+
+    return {
+      dots: this.dots,
+      productsRef: this.productsRef,
+      serviciosRef: this.serviciosRef,
+      casosRef: this.casosRef,
+      contactoRef: this.contactoRef,
+
+      productsHeadingOpacity: pv.opacity,
+      productsHeadingTransform: pv.transform,
+
+      serviciosOpacity: sv.opacity,
+      serviciosTransform: sv.transform,
+
+      casosHeadingOpacity: casosHead.opacity,
+      casosHeadingTransform: casosHead.transform,
+      casosCardOpacity: cv.opacity,
+      casosCardTransform: cv.transform,
+
+      contactoOpacity: cov.opacity,
+      contactoTransform: cov.transform,
+
+      sliderTransform: `translateX(-${s.slide * (100 / 3)}%)`,
+      dot0Color: s.slide === 0 ? '#F5A623' : 'rgba(176,140,255,0.3)',
+      dot1Color: s.slide === 1 ? '#F5A623' : 'rgba(176,140,255,0.3)',
+      dot2Color: s.slide === 2 ? '#F5A623' : 'rgba(176,140,255,0.3)',
+
+      nextSlide: this.nextSlide,
+      prevSlide: this.prevSlide,
+      goToSlide0: () => this.goToSlide(0),
+      goToSlide1: () => this.goToSlide(1),
+      goToSlide2: () => this.goToSlide(2),
+      pauseCarousel: this.pauseCarousel,
+      resumeCarousel: this.resumeCarousel,
+
+      emailCopied: s.emailCopied,
+      copyEmail: this.copyEmail,
+
+      card0Transform: s.flip0 ? 'rotateY(180deg)' : 'rotateY(0deg)',
+      card1Transform: s.flip1 ? 'rotateY(180deg)' : 'rotateY(0deg)',
+      card2Transform: s.flip2 ? 'rotateY(180deg)' : 'rotateY(0deg)',
+      card3Transform: s.flip3 ? 'rotateY(180deg)' : 'rotateY(0deg)',
+      card4Transform: s.flip4 ? 'rotateY(180deg)' : 'rotateY(0deg)',
+      card0Enter: () => this.cardEnter(0),
+      card0Leave: () => this.cardLeave(0),
+      card1Enter: () => this.cardEnter(1),
+      card1Leave: () => this.cardLeave(1),
+      card2Enter: () => this.cardEnter(2),
+      card2Leave: () => this.cardLeave(2),
+      card3Enter: () => this.cardEnter(3),
+      card3Leave: () => this.cardLeave(3),
+      card4Enter: () => this.cardEnter(4),
+      card4Leave: () => this.cardLeave(4),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
