@@ -31,6 +31,11 @@
     @keyframes floatCard2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
     @keyframes scrollPulse { 0% { opacity: 0; transform: translateY(0); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(16px); } }
     @keyframes twinkle { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.6; } }
+    @media (max-width: 768px) {
+      .casos-row { grid-template-columns: 1fr !important; gap: 20px !important; padding: 36px 0 !important; }
+      .casos-result { flex-direction: column !important; gap: 4px !important; }
+      .casos-result span:last-child { font-size: 17px !important; }
+    }
   </style>
   <script>
     window.__orbitaEase = 'cubic-bezier(0.25, 0.46, 0.45, 0.94)';
@@ -304,7 +309,7 @@
       <div style="display: flex; flex-direction: column;">
 
         <!-- Row INTRA -->
-        <div style="display: grid; grid-template-columns: 220px 1fr; gap: 48px; padding: 44px 0; border-top: 1px solid rgba(176,140,255,0.15); opacity: {{ casosCardOpacity }}; transform: {{ casosCardTransform }}; transition: opacity 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.1s, transform 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.1s;">
+        <div class="casos-row" style="display: grid; grid-template-columns: 220px 1fr; gap: 48px; padding: 44px 0; border-top: 1px solid rgba(176,140,255,0.15); opacity: {{ casosCardOpacity }}; transform: {{ casosCardTransform }}; transition: opacity 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.1s, transform 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.1s;">
           <div>
             <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: #7C5CFC; letter-spacing: 0.05em; margin-bottom: 10px;">01</div>
             <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 22px; color: #ffffff; margin-bottom: 10px;">INTRA</div>
@@ -316,7 +321,7 @@
           </div>
           <div>
             <p style="margin: 0 0 18px; font-size: 18px; color: #ffffff; line-height: 1.65; max-width: 680px;"><span style="color: #B08CFF;">Agenda manual y pacientes sin seguimiento post-consulta.</span> Construimos un sistema de WhatsApp Business con recordatorios automáticos, confirmaciones y encuestas post-visita.</p>
-            <div style="display: flex; align-items: baseline; gap: 10px;">
+            <div class="casos-result" style="display: flex; align-items: baseline; gap: 10px;">
               <span style="color: #F5A623; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'DM Sans', sans-serif;">Resultado</span>
               <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px; color: #F5A623;">Reducción de citas perdidas y reactivación de pacientes inactivos</span>
             </div>
@@ -324,7 +329,7 @@
         </div>
 
         <!-- Row Super Antony -->
-        <div style="display: grid; grid-template-columns: 220px 1fr; gap: 48px; padding: 44px 0; border-top: 1px solid rgba(176,140,255,0.15); border-bottom: 1px solid rgba(176,140,255,0.15); opacity: {{ casosCardOpacity }}; transform: {{ casosCardTransform }}; transition: opacity 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.25s, transform 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.25s;">
+        <div class="casos-row" style="display: grid; grid-template-columns: 220px 1fr; gap: 48px; padding: 44px 0; border-top: 1px solid rgba(176,140,255,0.15); border-bottom: 1px solid rgba(176,140,255,0.15); opacity: {{ casosCardOpacity }}; transform: {{ casosCardTransform }}; transition: opacity 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.25s, transform 700ms cubic-bezier(0.25,0.46,0.45,0.94) 0.25s;">
           <div>
             <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: #B08CFF; letter-spacing: 0.05em; margin-bottom: 10px;">02</div>
             <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 22px; color: #ffffff; margin-bottom: 10px;">Super Antony</div>
@@ -336,7 +341,7 @@
           </div>
           <div>
             <p style="margin: 0 0 18px; font-size: 18px; color: #ffffff; line-height: 1.65; max-width: 680px;"><span style="color: #B08CFF;">Operaciones dispersas entre múltiples tiendas sin visibilidad central.</span> Desarrollamos un sistema web de gestión de turnos, reportes y control operativo unificado.</p>
-            <div style="display: flex; align-items: baseline; gap: 10px;">
+            <div class="casos-result" style="display: flex; align-items: baseline; gap: 10px;">
               <span style="color: #F5A623; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'DM Sans', sans-serif;">Resultado</span>
               <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px; color: #F5A623;">Control total de operaciones y equipos desde un solo lugar</span>
             </div>
